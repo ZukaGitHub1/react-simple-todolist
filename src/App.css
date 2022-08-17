@@ -2,24 +2,39 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+     
 }
-div{
-    gap:5px;
- 
+.todo-list-div{
+      border-radius: 5px;
+      border:5px solid black;
+      background-color:rgba(0, 0, 0, 0.749);
+     color:white;
+     padding: 8px 14px 0 25px;
 }
-div li{
-    list-style: none;
-    line-height: 2;
-   
-    cursor:pointer;
+
+
+.todo-list {
+  margin:5px;
 }
-.box{
-    display: block;
+.todo-list button{
+    border-radius:3px;
+    color:white;
+    padding:12px;
+    background-color:rgba(0, 0, 0, 0.669);
+     
 }
-.strike {
-    display: none;
+.todo{
+    color:white;
+    font-size: 18px;
+    width: 100%;
+    background-color: rgb(8, 9, 9);
+  
 }
-.line{
-    text-decoration: line-through;
+
+.todo h3{ 
+     position: relative;
+      text-align: center;
+     margin:12px auto;
+     
+
 }

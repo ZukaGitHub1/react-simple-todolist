@@ -1,34 +1,50 @@
-import React, { useState } from 'react'
-import {todo} from './Todo'
+import React from "react";
+
+import { todo } from "./Todo";
 
 
-const TodoList = () => {
-  const [todoleast, setTodoleast] = useState(todo);
-  const [cleartodo, setCleartodo] = useState(false);
-  const [isDone, setIsDone]= useState(false);
-   const clicktoggle = () => {
-          setCleartodo( prev => prev =  true)
-   }
-
-    const lineTrough = () => {
-       setIsDone(prev => !prev);
-    }
-   return ( 
-    <div>
-     <div className='Header'>
-     <h1>MYTODOS</h1>
-     <button onClick={clicktoggle}>Clear  all</button>
-     </div>
-     <div>
-          {todoleast.map((index) => (
-           <li  onClick={lineTrough} className={ cleartodo ? "strike" : "" || isDone ? "line" : "" } key={index.id}>
-           {index.todo}
-           </li>
-          ))}
-     </div> 
-
+function Todo({ todo, index, handleClick }) {
+  return (
+    <div onClick={() => handleClick(index)}
+      className="todo"
+      style={{ textDecoration: todo.isDone ? "line-through" : "" }}>
+     <h3> {todo.todo}</h3>
     </div>
-  )
+  );
 }
 
-export default TodoList
+
+
+ 
+
+function Aapp() {
+  const [todos, setTodos] = React.useState(todo);
+
+ 
+
+  const handleClick = index => {
+    const newTodos = [...todos];
+    newTodos[index].isDone = !newTodos[index].isDone;
+    setTodos(newTodos);
+  };
+ 
+
+  return (
+    <div className="app">
+      <div className="todo-list"> 
+      <button onClick={() => setTodos([])}> clear all</button>
+        {todos.map((todo, index) => (
+          <Todo
+            key={index}
+            index={index}
+            todo={todo}
+            handleClick={handleClick} />
+      
+        ))}
+        
+      </div>
+    </div>
+  );
+}
+
+export default Aapp;
